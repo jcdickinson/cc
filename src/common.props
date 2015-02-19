@@ -43,15 +43,24 @@ SOFTWARE.
     </AdditionalLibraryDirectories>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(OutDir)\$(TargetName).pdb</ProgramDataBaseFileName>
+      <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <AdditionalLibraryDirectories>$(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

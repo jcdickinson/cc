@@ -12,6 +12,7 @@ build/
 lib/
 obj/
 !external/lib/
+*.idb
 
 # Visual Studo 2015 cache/options directory
 .vs/
