@@ -99,6 +99,9 @@
     <ClInclude Include="fx\shaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="content\contentmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -119,9 +122,5 @@
     <ClCompile Include="fx\shaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaders\simplevertexshader.vertexshader" />
-    <None Include="shaders\simplefragmentshader.fragmentshader" />
   </ItemGroup>
 </Project>

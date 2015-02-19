@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="content\contentmanager.h" />
     <ClInclude Include="fx\adapterinfo.h" />
     <ClInclude Include="fx\adaptermode.h" />
     <ClInclude Include="fx\context.h" />
