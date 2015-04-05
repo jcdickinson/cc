@@ -32,7 +32,7 @@ namespace fx {
       glfwSetErrorCallback(&ErrorCallback);
       if (!glfwInit( )) {
         _glfwInit--;
-        throw EngineException("Failed to prepare the OpenGL context: " + _lastErrorString, _lastErrorCode);
+        throw EngineException("Failed to prepare the OpenGL context: " + _lastErrorString, (ErrorCode)_lastErrorCode);
       }
     }
 
@@ -64,7 +64,7 @@ namespace fx {
                                reinterpret_cast<GLFWmonitor*>(const_cast<void*>(_options.Mode.Adapter.Native)),
                                nullptr);
     if (!_native) {
-      throw EngineException("Failed to create the OpenGL context: " + _lastErrorString, _lastErrorCode);
+      throw EngineException("Failed to create the OpenGL context: " + _lastErrorString, (ErrorCode)_lastErrorCode);
     }
 
     glfwMakeContextCurrent(WND);
@@ -73,7 +73,7 @@ namespace fx {
       glewExperimental = true;
       auto rc = glewInit( );
       if (rc != GLEW_OK) {
-        throw EngineException("Failed to initialize OpenGL extensions.", rc);
+        throw EngineException("Failed to initialize OpenGL extensions.", (ErrorCode) rc);
       }
     }
 
@@ -107,6 +107,6 @@ namespace fx {
   }
 
   EngineException Context::CreateGraphicsException(std::string prefix) {
-    throw EngineException(prefix + _lastErrorString, _lastErrorCode);
+    throw EngineException(prefix + _lastErrorString, (ErrorCode) _lastErrorCode);
   }
 }

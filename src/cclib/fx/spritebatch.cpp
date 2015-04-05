@@ -20,7 +20,8 @@ namespace fx {
     if (_vao != 0) glDeleteVertexArrays(1, &_vao);
   }
 
-  void SpriteBatch::Begin( ) {
+  void SpriteBatch::Begin(math::mat4 matrix) {
+    _matrix = matrix;
     _verticesSource.clear( );
     _indicesSource.clear( );
   }
@@ -30,7 +31,7 @@ namespace fx {
   }
 
   void SpriteBatch::Draw(float x, float y, float z, float w, float h) {
-    index_t i1 = _verticesSource.size( ),
+    index_t i1 = (index_t) _verticesSource.size( ),
             i2 = i1 + 1, i3 = i2 + 1, i4 = i3 + 1;
 
     _verticesSource.push_back({ x + 0, y + 0, z, 0, 0 });
@@ -55,15 +56,15 @@ namespace fx {
     if (_verticesSource.size( ) != 0) {
       glBindVertexArray(_vao);
 
-      auto voffset = _vertices.Stream<SpriteVertex>(_verticesSource[0], _verticesSource.size( ));
-      auto ioffset = _indices.Stream<index_t>(_indicesSource[0], _indicesSource.size( ));
+      auto voffset = _vertices.Stream<SpriteVertex>(_verticesSource[0], (index_t) _verticesSource.size( ));
+      auto ioffset = _indices.Stream<index_t>(_indicesSource[0], (index_t) _indicesSource.size( ));
 
       glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(SpriteVertex), BUFFER_OFFSET(voffset));
       glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(SpriteVertex), BUFFER_OFFSET(voffset + 12));
       glEnableVertexArrayAttrib(_vao, 0);
       glEnableVertexArrayAttrib(_vao, 1);
 
-      glDrawElements(GL_TRIANGLES, _indicesSource.size( ), GL_UNSIGNED_INT, BUFFER_OFFSET(ioffset));
+      glDrawElements(GL_TRIANGLES, (index_t) _indicesSource.size( ), GL_UNSIGNED_INT, BUFFER_OFFSET(ioffset));
 
       glDisableVertexArrayAttrib(_vao, 0);
       glDisableVertexArrayAttrib(_vao, 1);

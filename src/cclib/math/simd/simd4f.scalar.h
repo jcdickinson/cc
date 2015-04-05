@@ -33,7 +33,6 @@ SOFTWARE.
 #define DOBE_TRAIT_SIMD_4F_SCALAR
 #define DOBE_TRAIT_SIMD_4F "SCALAR"
 
-namespace cclib {
   namespace math {
     namespace simd {
 
@@ -131,17 +130,17 @@ namespace cclib {
       // COMPARISON
 
       cclib_static_inline simd4f simd4f_cmp_eq(simd4f lhs, simd4f rhs) throw() {
-        const simd4f s = { { -(lhs.f[0] == rhs.f[0]), -(lhs.f[1] == rhs.f[1]), -(lhs.f[2] == rhs.f[2]), -(lhs.f[3] == rhs.f[3]) } };
+        const simd4f s = { { -(float) (lhs.f[0] == rhs.f[0]), -(float) (lhs.f[1] == rhs.f[1]), -(float) (lhs.f[2] == rhs.f[2]), -(float) (lhs.f[3] == rhs.f[3]) } };
         return s;
       }
 
       cclib_static_inline simd4f simd4f_cmp_gt(simd4f lhs, simd4f rhs) throw() {
-        const simd4f s = { { -(lhs.f[0] > rhs.f[0]), -(lhs.f[1] > rhs.f[1]), -(lhs.f[2] > rhs.f[2]), -(lhs.f[3] > rhs.f[3]) } };
+        const simd4f s = { { -(float) (lhs.f[0] > rhs.f[0]), -(float) (lhs.f[1] > rhs.f[1]), -(float) (lhs.f[2] > rhs.f[2]), -(float) (lhs.f[3] > rhs.f[3]) } };
         return s;
       }
 
       cclib_static_inline simd4f simd4f_cmp_lt(simd4f lhs, simd4f rhs) throw() {
-        const simd4f s = { { -(lhs.f[0] < rhs.f[0]), -(lhs.f[1] < rhs.f[1]), -(lhs.f[2] < rhs.f[2]), -(lhs.f[3] < rhs.f[3]) } };
+        const simd4f s = { { -(float) (lhs.f[0] < rhs.f[0]), -(float) (lhs.f[1] < rhs.f[1]), -(float) (lhs.f[2] < rhs.f[2]), -(float) (lhs.f[3] < rhs.f[3]) } };
         return s;
       }
 
@@ -242,6 +241,5 @@ namespace cclib {
       }
     }
   }
-}
 
 #endif

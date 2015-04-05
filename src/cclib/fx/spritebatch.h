@@ -1,7 +1,9 @@
 #pragma once
 #include <stdint.h>
-#include "streamingbufferobject.h"
 #include <vector>
+
+#include "streamingbufferobject.h"
+#include "../math.h"
 
 namespace fx {
 
@@ -21,16 +23,18 @@ namespace fx {
     SpriteBatch( );
     ~SpriteBatch( );
 
-    void Begin( );
+    void Begin(math::mat4 matrix);
     void End( );
 
     void Draw(float x, float y, float z, float w, float h);
 
     private:
+    math::mat4 _matrix;
+
     uint32_t _vao;
     StreamingBufferObject _vertices;
     StreamingBufferObject _indices;
-    
+
     std::vector<SpriteVertex> _verticesSource;
     std::vector<index_t> _indicesSource;
 

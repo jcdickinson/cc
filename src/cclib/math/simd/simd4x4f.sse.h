@@ -34,22 +34,20 @@ SOFTWARE.
 #define DOBE_TRAIT_SIMD_4X4F_SSE
 #define DOBE_TRAIT_SIMD_4X4F "SSE"
 
-namespace cclib {
-  namespace math {
-    namespace simd {
+namespace math {
+  namespace simd {
 
-      typedef struct {
-        simd4f x, y, z, w;
-      } simd4x4f;
+    typedef struct {
+      simd4f x, y, z, w;
+    } simd4x4f;
 
-      cclib_static_inline void simd4x4f_transpose_inplace(simd4x4f *s) {
-        _MM_TRANSPOSE4_PS(s->x, s->y, s->z, s->w);
-      }
+    cclib_static_inline void simd4x4f_transpose_inplace(simd4x4f *s) {
+      _MM_TRANSPOSE4_PS(s->x, s->y, s->z, s->w);
+    }
 
-      cclib_static_inline void simd4x4f_transpose(const simd4x4f *s, simd4x4f *out) {
-        *out = *s;
-        simd4x4f_transpose_inplace(out);
-      }
+    cclib_static_inline void simd4x4f_transpose(const simd4x4f *s, simd4x4f *out) {
+      *out = *s;
+      simd4x4f_transpose_inplace(out);
     }
   }
 }

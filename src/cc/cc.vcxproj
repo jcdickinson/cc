@@ -159,6 +159,9 @@
     <None Include="shaders\fragment.glsl">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="shaders\sprite.json">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="shaders\vertex.glsl">
       <DeploymentContent>true</DeploymentContent>
     </None>
@@ -167,6 +170,6 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <Target Name="CopyFiles" AfterTargets="ClCompile">
-    <Copy SourceFiles="@(None)" DestinationFolder="$(TargetDir)\%(RelativeDir)" Condition="'%(DeploymentContent)'=='true'" />
+    <Copy SourceFiles="@(None)" DestinationFolder="$(TargetDir)\%(RelativeDir)" Condition="'%(None.DeploymentContent)'=='true'" />
   </Target>
 </Project>

@@ -130,11 +130,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="content\contentmanager.h" />
+    <ClInclude Include="content\stdafx.h" />
     <ClInclude Include="fx\adapterinfo.h" />
     <ClInclude Include="fx\adaptermode.h" />
+    <ClInclude Include="fx\camera.h" />
     <ClInclude Include="fx\context.h" />
     <ClInclude Include="fx\contextoptions.h" />
     <ClInclude Include="engineexception.h" />
+    <ClInclude Include="fx\shader.h" />
+    <ClInclude Include="fx\shaderprogram.h" />
     <ClInclude Include="fx\shaders.h" />
     <ClInclude Include="fx\spritebatch.h" />
     <ClInclude Include="fx\stdafx.h" />
@@ -160,8 +164,13 @@
     <ClInclude Include="tools.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="content\contentmanager.cpp" />
+    <ClCompile Include="content\stringcontent.cpp" />
     <ClCompile Include="engineexception.cpp" />
+    <ClCompile Include="fx\camera.cpp" />
     <ClCompile Include="fx\context.cpp" />
+    <ClCompile Include="fx\shader.cpp" />
+    <ClCompile Include="fx\shaderprogram.cpp" />
     <ClCompile Include="fx\shaders.cpp" />
     <ClCompile Include="fx\spritebatch.cpp" />
     <ClCompile Include="fx\streamingbufferobject.cpp" />

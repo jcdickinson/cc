@@ -27,14 +27,12 @@ SOFTWARE.
 #include "math/mat.h"
 #include "math/quat.h"
 
-namespace cclib {
-  namespace math {
-    typedef vec<2> vec2;
-    typedef vec<3> vec3;
-    typedef vec<4> vec4;
+namespace math {
+  typedef vec<2> vec2;
+  typedef vec<3> vec3;
+  typedef vec<4> vec4;
 
-    typedef mat<2> mat2;
-    typedef mat<3> mat3;
-    typedef mat<4> mat4;
-  }
+  typedef mat<2> mat2;
+  typedef mat<3> mat3;
+  typedef mat<4> mat4;
 }

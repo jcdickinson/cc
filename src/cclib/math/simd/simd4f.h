@@ -29,70 +29,68 @@ SOFTWARE.
 # error "No SIMD4F implementation."
 #endif
 
-namespace cclib {
-  namespace math {
-    namespace simd {
-      cclib_static_inline simd4f simd4f_sum(simd4f v) throw() {
-        const simd4f s1 = simd4f_add(simd4f_splat_x(v), simd4f_splat_y(v));
-        const simd4f s2 = simd4f_add(s1, simd4f_splat_z(v));
-        const simd4f s3 = simd4f_add(s2, simd4f_splat_w(v));
-        return s3;
-      }
+namespace math {
+  namespace simd {
+    cclib_static_inline simd4f simd4f_sum(simd4f v) throw() {
+      const simd4f s1 = simd4f_add(simd4f_splat_x(v), simd4f_splat_y(v));
+      const simd4f s2 = simd4f_add(s1, simd4f_splat_z(v));
+      const simd4f s3 = simd4f_add(s2, simd4f_splat_w(v));
+      return s3;
+    }
 
-      cclib_static_inline simd4f simd4f_dot4(simd4f lhs, simd4f rhs) throw() {
-        return simd4f_sum(simd4f_mul(lhs, rhs));
-      }
+    cclib_static_inline simd4f simd4f_dot4(simd4f lhs, simd4f rhs) throw() {
+      return simd4f_sum(simd4f_mul(lhs, rhs));
+    }
 
-      cclib_static_inline simd4f simd4f_dot2(simd4f lhs, simd4f rhs) throw() {
-        const simd4f m = simd4f_mul(lhs, rhs);
-        const simd4f s1 = simd4f_add(simd4f_splat_x(m), simd4f_splat_y(m));
-        return s1;
-      }
-
-
-      cclib_static_inline simd4f simd4f_length4(simd4f v) throw() {
-        return simd4f_sqrt(simd4f_dot4(v, v));
-      }
-
-      cclib_static_inline simd4f simd4f_length3(simd4f v) throw() {
-        return simd4f_sqrt(simd4f_splat(simd4f_dot3(v, v)));
-      }
-
-      cclib_static_inline simd4f simd4f_length2(simd4f v) throw() {
-        return simd4f_sqrt(simd4f_dot2(v, v));
-      }
-
-      cclib_static_inline simd4f simd4f_length4_squared(simd4f v) throw() {
-        return simd4f_dot4(v, v);
-      }
-
-      cclib_static_inline float simd4f_length3_squared_scalar(simd4f v) throw() {
-        return simd4f_dot3(v, v);
-      }
-
-      cclib_static_inline simd4f simd4f_length2_squared(simd4f v) throw() {
-        return simd4f_dot2(v, v);
-      }
+    cclib_static_inline simd4f simd4f_dot2(simd4f lhs, simd4f rhs) throw() {
+      const simd4f m = simd4f_mul(lhs, rhs);
+      const simd4f s1 = simd4f_add(simd4f_splat_x(m), simd4f_splat_y(m));
+      return s1;
+    }
 
 
-      cclib_static_inline simd4f simd4f_normalize4(simd4f a) throw() {
-        simd4f invlen = simd4f_rsqrt(simd4f_dot4(a, a));
-        return simd4f_mul(a, invlen);
-      }
+    cclib_static_inline simd4f simd4f_length4(simd4f v) throw() {
+      return simd4f_sqrt(simd4f_dot4(v, v));
+    }
 
-      cclib_static_inline simd4f simd4f_normalize3(simd4f a) throw() {
-        simd4f invlen = simd4f_rsqrt(simd4f_splat(simd4f_dot3(a, a)));
-        return simd4f_mul(a, invlen);
-      }
+    cclib_static_inline simd4f simd4f_length3(simd4f v) throw() {
+      return simd4f_sqrt(simd4f_splat(simd4f_dot3(v, v)));
+    }
 
-      cclib_static_inline simd4f simd4f_normalize2(simd4f a) throw() {
-        simd4f invlen = simd4f_rsqrt(simd4f_dot2(a, a));
-        return simd4f_mul(a, invlen);
-      }
+    cclib_static_inline simd4f simd4f_length2(simd4f v) throw() {
+      return simd4f_sqrt(simd4f_dot2(v, v));
+    }
 
-      cclib_static_inline simd4f simd4f_abs(simd4f v) throw() {
-        return simd4f_max(simd4f_sub(simd4f_splat(0.0f), v), v);
-      }
+    cclib_static_inline simd4f simd4f_length4_squared(simd4f v) throw() {
+      return simd4f_dot4(v, v);
+    }
+
+    cclib_static_inline float simd4f_length3_squared_scalar(simd4f v) throw() {
+      return simd4f_dot3(v, v);
+    }
+
+    cclib_static_inline simd4f simd4f_length2_squared(simd4f v) throw() {
+      return simd4f_dot2(v, v);
+    }
+
+
+    cclib_static_inline simd4f simd4f_normalize4(simd4f a) throw() {
+      simd4f invlen = simd4f_rsqrt(simd4f_dot4(a, a));
+      return simd4f_mul(a, invlen);
+    }
+
+    cclib_static_inline simd4f simd4f_normalize3(simd4f a) throw() {
+      simd4f invlen = simd4f_rsqrt(simd4f_splat(simd4f_dot3(a, a)));
+      return simd4f_mul(a, invlen);
+    }
+
+    cclib_static_inline simd4f simd4f_normalize2(simd4f a) throw() {
+      simd4f invlen = simd4f_rsqrt(simd4f_dot2(a, a));
+      return simd4f_mul(a, invlen);
+    }
+
+    cclib_static_inline simd4f simd4f_abs(simd4f v) throw() {
+      return simd4f_max(simd4f_sub(simd4f_splat(0.0f), v), v);
     }
   }
 }

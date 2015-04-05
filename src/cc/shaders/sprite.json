@@ -1,0 +1,8 @@
+{
+    "name": "Sprite",
+    "author": "Jonathan Dickinson",
+    "sources": {
+        "vertex": "vertex",
+        "fragment": "fragment"
+    }
+}

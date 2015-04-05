@@ -13,13 +13,13 @@ const char* copy(const char* message) {
   return copy(s);
 }
 
-EngineException::EngineException(const std::string& message, int32_t code)
+EngineException::EngineException(const std::string& message, ErrorCode code)
   : _what(copy(message))
   , _code(code) {
 
 }
 
-EngineException::EngineException(const char* message, int32_t code)
+EngineException::EngineException(const char* message, ErrorCode code)
   : _what(copy(message))
   , _code(code) {
 
@@ -33,6 +33,6 @@ const char* EngineException::what( ) const throw() {
   return _what;
 }
 
-const int32_t EngineException::code( ) const throw() {
+const ErrorCode EngineException::code( ) const throw() {
   return _code;
 }
