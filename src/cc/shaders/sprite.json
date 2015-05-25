@@ -2,7 +2,15 @@
     "name": "Sprite",
     "author": "Jonathan Dickinson",
     "sources": {
-        "vertex": "vertex",
-        "fragment": "fragment"
+        "vertex": {
+            "file": "vertex"
+        },
+        "fragment": {
+            "file": "fragment",
+            "blend": {
+                "src": "src_alpha",
+                "dst": "one_minus_src_alpha"
+            }
+        }
     }
 }

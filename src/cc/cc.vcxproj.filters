@@ -28,9 +28,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\fragment.glsl" />
     <None Include="shaders\vertex.glsl" />
     <None Include="shaders\sprite.json" />
+    <None Include="shaders\fragment.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\ball.dds" />

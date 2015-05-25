@@ -137,6 +137,7 @@
     <ClInclude Include="fx\context.h" />
     <ClInclude Include="fx\contextoptions.h" />
     <ClInclude Include="engineexception.h" />
+    <ClInclude Include="fx\igpustate.h" />
     <ClInclude Include="fx\shader.h" />
     <ClInclude Include="fx\shaderprogram.h" />
     <ClInclude Include="fx\shaders.h" />

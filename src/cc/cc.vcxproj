@@ -156,25 +156,29 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\fragment.glsl">
+    <Text Include="shaders\fragment.glsl">
       <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="shaders\sprite.json">
+      <FileType>Document</FileType>
+    </Text>
+    <Text Include="shaders\sprite.json">
       <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="shaders\vertex.glsl">
+    </Text>
+    <Text Include="shaders\vertex.glsl">
       <DeploymentContent>true</DeploymentContent>
-    </None>
+      <FileType>Document</FileType>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\ball.dds">
       <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
     </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="@(None)" DestinationFolder="$(TargetDir)\%(RelativeDir)" Condition="'%(None.DeploymentContent)'=='true'" />
+  <Target Name="CopyFiles" BeforeTargets="Build">
+    <Copy SourceFiles="@(Text)" DestinationFolder="$(TargetDir)\%(RelativeDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Condition="'%(Text.DeploymentContent)'=='true'" />
+    <Copy SourceFiles="@(Image)" DestinationFolder="$(TargetDir)\%(RelativeDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Condition="'%(Image.DeploymentContent)'=='true'" />
   </Target>
 </Project>
