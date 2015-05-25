@@ -35,9 +35,9 @@ namespace fx {
             i2 = i1 + 1, i3 = i2 + 1, i4 = i3 + 1;
 
     _verticesSource.push_back({ x + 0, y + 0, z, 0, 0 });
-    _verticesSource.push_back({ x + w, y + 0, z, 0, 0 });
-    _verticesSource.push_back({ x + w, y + h, z, 0, 0 });
-    _verticesSource.push_back({ x + 0, y + h, z, 0, 0 });
+    _verticesSource.push_back({ x + w, y + 0, z, 1, 0 });
+    _verticesSource.push_back({ x + w, y + h, z, 1, 1 });
+    _verticesSource.push_back({ x + 0, y + h, z, 0, 1 });
 
     _indicesSource.push_back(i1);
     _indicesSource.push_back(i3);

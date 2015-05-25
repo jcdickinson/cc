@@ -10,6 +10,7 @@
 #include <cclib/math.h>
 #include <cclib/content/contentmanager.h>
 #include <cclib/fx/shader.h>
+#include <cclib/fx/texture.h>
 
 #include <gl/glew.h>
 #include <gl/glfw3.h>
@@ -20,6 +21,7 @@ int main(int argc, char* argv[ ]) {
 
     auto context = std::make_shared<fx::Context>( );
     auto shader = cm.LoadContent<fx::Shader>("shaders/sprite");
+	auto texture = cm.LoadContent<fx::Texture>("textures/ball");
 
     auto sb = std::make_shared<fx::SpriteBatch>( );
     auto y = 0;
@@ -33,9 +35,12 @@ int main(int argc, char* argv[ ]) {
       glClear(GL_COLOR_BUFFER_BIT);
       shader->Apply( );
 
+	  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	  
       sb->Begin(math::mat_identity<4, 4>( ));
 
-      sb->Draw(y, y, 0, 10, 10);
+      sb->Draw(y, y, 0, 100, 100);
 
       sb->End( );
 

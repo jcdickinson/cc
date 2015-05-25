@@ -166,10 +166,15 @@
       <DeploymentContent>true</DeploymentContent>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\ball.dds">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <Target Name="CopyFiles" AfterTargets="ClCompile">
+  <Target Name="CopyFiles" AfterTargets="Build">
     <Copy SourceFiles="@(None)" DestinationFolder="$(TargetDir)\%(RelativeDir)" Condition="'%(None.DeploymentContent)'=='true'" />
   </Target>
 </Project>

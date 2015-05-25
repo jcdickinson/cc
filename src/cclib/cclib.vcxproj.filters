@@ -114,6 +114,9 @@
     <ClInclude Include="fx\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fx\texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -140,13 +143,13 @@
     <ClCompile Include="content\contentmanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="content\stringcontent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fx\shaderprogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fx\shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fx\texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

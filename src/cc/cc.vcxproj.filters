@@ -32,4 +32,7 @@
     <None Include="shaders\vertex.glsl" />
     <None Include="shaders\sprite.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\ball.dds" />
+  </ItemGroup>
 </Project>
