@@ -25,6 +25,9 @@ namespace fx {
     const uint32_t _blend_dst;
 
     public:
+    FragmentShaderState(const FragmentShaderState&) = default;
+    FragmentShaderState& operator=(const FragmentShaderState&) = delete;
+
     FragmentShaderState(bool blend_enabled = false, uint32_t blend_src = 0, uint32_t blend_dst = 0) :
       _blend_enabled(blend_enabled),
       _blend_src(blend_src),
@@ -124,7 +127,7 @@ namespace content {
     istream& _is;
   };
 
-  uint32_t ReadBlendFunc(const LoadOperation& operation, rapidjson::Value& value, bool& enabled) {
+  uint32_t ReadBlendFunc(rapidjson::Value& value, bool& enabled) {
     auto str = string(value.GetString( ));
     enabled = true;
     if (str == "one") return GL_ONE;
@@ -155,7 +158,7 @@ namespace content {
         auto& jsrc = blend["src"];
         if (!jsrc.IsString( ))
           throw EngineException("The 'sources.fragment.blend.src' member must be a string if present: " + operation.Path, ErrorCode::CONTENT_INVALID_DATA);
-        blend_src = ReadBlendFunc(operation, jsrc, blend_enabled);
+        blend_src = ReadBlendFunc(jsrc, blend_enabled);
         if (!blend_enabled)
           throw EngineException("The 'sources.fragment.blend.src' is not a valid value: " + operation.Path, ErrorCode::CONTENT_INVALID_DATA);
       }
@@ -164,7 +167,7 @@ namespace content {
         auto& jdst = blend["dst"];
         if (!jdst.IsString( ))
           throw EngineException("The 'sources.fragment.blend.dst' member must be a string if present: " + operation.Path, ErrorCode::CONTENT_INVALID_DATA);
-        blend_dst = ReadBlendFunc(operation, jdst, blend_enabled);
+        blend_dst = ReadBlendFunc(jdst, blend_enabled);
         if (!blend_enabled)
           throw EngineException("The 'sources.fragment.blend.dst' is not a valid value: " + operation.Path, ErrorCode::CONTENT_INVALID_DATA);
       }
@@ -178,7 +181,8 @@ namespace content {
     rapidjson::Document d;
     d.ParseStream(stream);
 
-    auto err = d.HasParseError( );
+    if (d.HasParseError( ))
+      throw EngineException("Failed to parse: " + operation.Path, ErrorCode::CONTENT_INVALID_DATA);
 
     auto sources = d.FindMember("sources");
     if (sources == d.MemberEnd( ) || !sources->value.IsObject( ))

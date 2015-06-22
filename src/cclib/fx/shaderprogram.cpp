@@ -25,7 +25,7 @@ namespace fx {
 
 namespace content {
 
-  template<uint32_t T> cclib_static_inline shared_ptr<fx::ShaderProgram<T>> LoadShader(const LoadOperation& operation) {
+  template<uint32_t T> shared_ptr<fx::ShaderProgram<T>> LoadShader(const LoadOperation& operation) {
     uint32_t shaderId = glCreateShader(T);
 
     LOG(DEBUG) << L"Reading shader " << operation.Path << L" ...";

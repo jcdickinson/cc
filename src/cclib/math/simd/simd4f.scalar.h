@@ -33,6 +33,9 @@ SOFTWARE.
 #define DOBE_TRAIT_SIMD_4F_SCALAR
 #define DOBE_TRAIT_SIMD_4F "SCALAR"
 
+#pragma warning(push)
+#pragma warning(disable:4127)
+
   namespace math {
     namespace simd {
 
@@ -242,4 +245,5 @@ SOFTWARE.
     }
   }
 
+#pragma warning(pop)
 #endif

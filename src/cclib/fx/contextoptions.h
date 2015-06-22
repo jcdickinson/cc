@@ -4,12 +4,11 @@
 namespace fx {
 
   struct ContextOptions {
-
     const AdapterMode Mode;
 
     uint8_t AlphaBits, DepthBits, StencilBits;
     uint8_t Samples;
-    
+
     bool DoubleBuffer;
     bool Debug;
 
@@ -19,6 +18,9 @@ namespace fx {
     bool Focused;
     bool AutoIconify;
     bool Topmost;
+
+    ContextOptions(const ContextOptions&) = default;
+    ContextOptions& operator=(const ContextOptions&) = delete;
 
     ContextOptions(const AdapterMode& mode = AdapterMode( ))
       : Mode(mode) {

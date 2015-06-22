@@ -4,6 +4,9 @@
 namespace fx {
   class StreamingBufferObject {
     public:
+    StreamingBufferObject(const StreamingBufferObject&) = default;
+    StreamingBufferObject& operator=(const StreamingBufferObject&) = delete;
+
     StreamingBufferObject(uint32_t target, uint32_t size = 0x200000);
     ~StreamingBufferObject( );
 

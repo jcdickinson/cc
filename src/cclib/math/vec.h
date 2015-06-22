@@ -26,6 +26,9 @@ SOFTWARE.
 
 #include "../tools.h"
 
+#pragma warning(push)
+#pragma warning(disable:4127)
+
 namespace math {
 
   template <int d>
@@ -150,9 +153,9 @@ namespace math {
 
     // SWIZZLE
 
-    cclib_inline vec<3> xyz( ) throw() {
+    cclib_inline vec<3>& xyz( ) throw() {
       static_assert(d > 3, "Only supported for vectors with at least 4 dimensions.");
-      return vec<3>(x( ), y( ), z( ));
+      return *reinterpret_cast<vec<3>*>(&data_[0]);
     }
 
     cclib_inline const vec<3> xyz( ) const throw() {
@@ -160,9 +163,9 @@ namespace math {
       return vec<3>(x( ), y( ), z( ));
     }
 
-    cclib_inline vec<2> xy( ) throw() {
+    cclib_inline vec<2>& xy( ) throw() {
       static_assert(d > 2, "Only supported for vectors with at least 3 dimensions.");
-      return vec<2>(x( ), y( ));
+      return *reinterpret_cast<vec<2>*>(&data_[0]);
     }
 
     cclib_inline const vec<2> xy( ) const throw() {
@@ -170,14 +173,14 @@ namespace math {
       return vec<2>(x( ), y( ));
     }
 
-    cclib_inline vec<2> yz( ) throw() {
+    cclib_inline vec<2>& yz( ) throw() {
       static_assert(d > 2, "Only supported for vectors with at least 3 dimensions.");
-      return vec<2>(y( ), z( ));
+      return *reinterpret_cast<vec<2>*>(&data_[1]);
     }
 
     cclib_inline const vec<2> yz( ) const throw() {
       static_assert(d > 2, "Only supported for vectors with at least 3 dimensions.");
-      return vec<2>(y( ), z( ));
+      return vec<3>(y( ), z( ));
     }
 
     cclib_inline vec<2> xz( ) throw() {
@@ -586,6 +589,7 @@ namespace math {
     return os;
   }
 }
+#pragma warning(pop)
 
 #include "vec3.h"
 #include "vec4.h"

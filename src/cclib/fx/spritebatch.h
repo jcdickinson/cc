@@ -20,6 +20,9 @@ namespace fx {
     public:
     typedef uint32_t index_t;
 
+    SpriteBatch(const SpriteBatch&) = default;
+    SpriteBatch& operator=(const SpriteBatch&) = delete;
+
     SpriteBatch( );
     ~SpriteBatch( );
 
@@ -38,7 +41,7 @@ namespace fx {
     std::vector<SpriteVertex> _verticesSource;
     std::vector<index_t> _indicesSource;
 
-    void Flush(bool forced);
+    void Flush();
   };
 
 }

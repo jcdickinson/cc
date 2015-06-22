@@ -7,11 +7,10 @@
 namespace fx {
 
   class Context {
-    private:
-    const ContextOptions _options;
-    void* _native;
-
     public:
+    Context(const Context&) = default;
+    Context& operator=(const Context&) = delete;
+
     Context(const ContextOptions& options = ContextOptions( ), std::string title = "Game");
     ~Context( );
 
@@ -21,6 +20,10 @@ namespace fx {
     bool CloseRequested( );
 
     static EngineException CreateGraphicsException(std::string prefix = "");
+
+    private:
+    const ContextOptions _options;
+    void* _native;
   };
 
 }

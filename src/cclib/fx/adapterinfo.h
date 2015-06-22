@@ -10,6 +10,9 @@ namespace fx {
     const bool Fullscreen;
     const bool IsDefault;
 
+    AdapterInfo(const AdapterInfo&) = default;
+    AdapterInfo& operator=(const AdapterInfo&) = delete;
+
     AdapterInfo(void* native = nullptr, std::string title = "", bool fullscreen = false, bool isDefault = false)
       : Native(native)
       , Title(title)

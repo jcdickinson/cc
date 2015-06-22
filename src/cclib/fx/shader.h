@@ -11,11 +11,14 @@ namespace fx {
 
   class Shader : public IGpuState {
     public:
+    Shader(const Shader&) = default;
+    Shader& operator=(const Shader&) = delete;
+
     Shader(
-      const uint32_t id, 
-      const std::unordered_map<uint32_t, std::shared_ptr<IShaderProgram>>& programs, 
+      const uint32_t id,
+      const std::unordered_map<uint32_t, std::shared_ptr<IShaderProgram>>& programs,
       const std::vector<std::shared_ptr<fx::IGpuState>>& states);
-    ~Shader();
+    ~Shader( );
 
     uint32_t Uniform(const std::string name);
     template<typename T> void Uniform(const uint32_t id, const T& value);

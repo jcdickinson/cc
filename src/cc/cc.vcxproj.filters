@@ -28,11 +28,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\vertex.glsl" />
-    <None Include="shaders\sprite.json" />
-    <None Include="shaders\fragment.glsl" />
+    <Image Include="textures\ball.dds" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="textures\ball.dds" />
+    <Text Include="shaders\fragment.glsl" />
+    <Text Include="shaders\sprite.json" />
+    <Text Include="shaders\vertex.glsl" />
   </ItemGroup>
 </Project>

@@ -27,6 +27,8 @@ SOFTWARE.
 #include "../tools.h"
 #include "vec.h"
 
+#pragma warning(push)
+#pragma warning(disable:4127)
 namespace math {
 
   template <int rows, int columns = rows>
@@ -501,5 +503,5 @@ namespace math {
     return r;
   }
 }
-
+#pragma warning(pop)
 #include "mat4x4.h"

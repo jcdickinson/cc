@@ -118,7 +118,7 @@ namespace math {
       vec<4> r;
       r.xyz( ) = w( ) > 0 ? xyz( ) : -xyz( );
       auto l = length(r.xyz( ));
-      r.w( ) = 2 * atan2(l, w( ) > 0 ? w( ) : -w( ));
+      r.w( ) = (float)(2 * atan2(l, w( ) > 0 ? w( ) : -w( )));
       r.xyz( ) /= l;
       return r;
     }

@@ -29,6 +29,11 @@ int main(int argc, char* argv[ ]) {
     auto matrix = math::mat_ortho(0, 640, 0, 480);
     shader->Uniform("MVP", matrix);
 
+    auto v4 = math::vec4(1, 2, 3, 4);
+    auto& z = v4.xyz( );
+    printf("Something complex");
+    z.x( ) = 5;
+
     do {
       context->Begin( );
       glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -40,7 +45,7 @@ int main(int argc, char* argv[ ]) {
 
       sb->Begin(math::mat_identity<4, 4>( ));
 
-      sb->Draw(y, y, 0, 100, 100);
+      sb->Draw((float)y, (float)y, 0.0f, 100.0f, 100.0f);
 
       sb->End( );
 

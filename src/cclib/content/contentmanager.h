@@ -26,6 +26,9 @@ namespace content {
   class ContentManager;
 
   struct LoadOperation {
+    LoadOperation(const LoadOperation&) = default;
+    LoadOperation& operator=(const LoadOperation&) = delete;
+
     LoadOperation(ContentManager& contentManager, const std::string path, const std::string fullPath, const std::shared_ptr<std::istream> data);
     ~LoadOperation( );
 
@@ -37,6 +40,9 @@ namespace content {
 
   class ContentManager {
     public:
+    ContentManager(const ContentManager&) = default;
+    ContentManager& operator=(const ContentManager&) = delete;
+
     ContentManager(const std::string basePath, bool includesExeName = true);
     ~ContentManager( );
 

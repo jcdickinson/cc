@@ -27,7 +27,7 @@ namespace fx {
   }
 
   void SpriteBatch::End( ) {
-    Flush(true);
+    Flush();
   }
 
   void SpriteBatch::Draw(float x, float y, float z, float w, float h) {
@@ -48,11 +48,11 @@ namespace fx {
     _indicesSource.push_back(i3);
 
     if (_verticesSource.size( ) >= 1024) {
-      Flush(true);
+      Flush();
     }
   }
 
-  void SpriteBatch::Flush(bool forced) {
+  void SpriteBatch::Flush() {
     if (_verticesSource.size( ) != 0) {
       glBindVertexArray(_vao);
 

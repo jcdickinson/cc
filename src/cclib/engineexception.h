@@ -25,6 +25,9 @@ enum class ErrorCode {
 
 class EngineException : public std::exception {
   public:
+  EngineException(const EngineException&) = default;
+  EngineException& operator=(const EngineException&) = delete;
+
   EngineException(const char* message, ErrorCode code = ErrorCode::UNKNOWN);
   EngineException(const std::string& message, ErrorCode code = ErrorCode::UNKNOWN);
   ~EngineException( ) throw();
